@@ -4,11 +4,13 @@ RUN apt-get update && apt-get install -y git curl zip && rm -rf /var/lib/apt/lis
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
+ENV USERMAP_UID 1000
+ENV GROUPMAP_UID 1000
 
 ARG user=jenkins
 ARG group=jenkins
-ARG uid=1000
-ARG gid=1000
+ARG uid=${USERMAP_UID}
+ARG gid=${GROUPMAP_UID}
 
 # Jenkins is run with user `jenkins`, uid = 1000
 # If you bind mount a volume from the host or a data container, 
